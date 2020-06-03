@@ -1,11 +1,16 @@
 package com.croga.petclinic.services.map;
 
 import com.croga.petclinic.model.Owner;
-import com.croga.petclinic.services.CrudService;
+import com.croga.petclinic.services.OwnerService;
 
 import java.util.Set;
 
-public class OwnerServiceMap extends AbastractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerServiceMap extends AbastractMapService<Owner, Long> implements OwnerService {
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return null;
+    }
 
     @Override
     public Set<Owner> findAll() {

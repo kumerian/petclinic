@@ -1,11 +1,11 @@
 package com.croga.petclinic.services.map;
 
 import com.croga.petclinic.model.Pet;
-import com.croga.petclinic.services.CrudService;
+import com.croga.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbastractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbastractMapService<Pet, Long> implements PetService {
     @Override
     public Set<Pet> findAll() {
         return super.findAll();
