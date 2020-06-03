@@ -2,9 +2,11 @@ package com.croga.petclinic.services.map;
 
 import com.croga.petclinic.model.Owner;
 import com.croga.petclinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class OwnerServiceMap extends AbastractMapService<Owner, Long> implements OwnerService {
 
     @Override
