@@ -1,6 +1,8 @@
 package com.croga.petclinic.services.map;
 
+import com.croga.petclinic.model.Specialty;
 import com.croga.petclinic.model.Vet;
+import com.croga.petclinic.services.SpecialtyService;
 import com.croga.petclinic.services.VetService;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,12 @@ import java.util.Set;
 
 @Service
 public class VetServiceMap extends AbastractMapService<Vet, Long> implements VetService {
+
+    private final SpecialtyService specialtyService;
+
+    public VetServiceMap(SpecialtyService specialtyService) {
+        this.specialtyService = specialtyService;
+    }
 
     @Override
     public Set<Vet> findAll() {
@@ -21,6 +29,14 @@ public class VetServiceMap extends AbastractMapService<Vet, Long> implements Vet
 
     @Override
     public Vet save(Vet vet) {
+        if (vet.getSpecialties().size() > 0) {
+            vet.getSpecialties().forEach(specialty -> {
+                if(specialty.getId() == null) {
+                    Specialty savedSpecialty = specialtyService.save(specialty);
+                    specialty.setId(savedSpecialty.getId());
+                }
+            });
+        }
         return super.save(vet);
     }
 
