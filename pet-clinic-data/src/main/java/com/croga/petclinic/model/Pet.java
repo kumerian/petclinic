@@ -1,13 +1,25 @@
 package com.croga.petclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pet")
 public class Pet extends BaseEntity {
 
+    @Column(name = "name")
     private String name;
-    private PetType petType;
-    private Owner owner;
+
+    @Column(name = "birth_date")
     private LocalDate birthDate;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private Owner owner;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private PetType petType;
 
     public String getName() {
         return name;
@@ -17,12 +29,12 @@ public class Pet extends BaseEntity {
         this.name = name;
     }
 
-    public PetType getPetType() {
-        return petType;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setPetType(PetType petType) {
-        this.petType = petType;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public Owner getOwner() {
@@ -33,11 +45,11 @@ public class Pet extends BaseEntity {
         this.owner = owner;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
+    public PetType getPetType() {
+        return petType;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
+    public void setPetType(PetType petType) {
+        this.petType = petType;
     }
 }
