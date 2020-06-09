@@ -2,9 +2,11 @@ package com.croga.petclinic.services.map;
 
 import com.croga.petclinic.model.Visit;
 import com.croga.petclinic.services.VisitService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class VisitServiceMap extends AbastractMapService<Visit, Long> implements VisitService {
 
     @Override
