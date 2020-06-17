@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "pet")
+@Table(name = "pets")
 public class Pet extends BaseEntity {
 
     @Builder
